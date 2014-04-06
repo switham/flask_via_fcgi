@@ -1,0 +1,5 @@
+Options +ExecCGI
+AddHandler fcgid-script .fcgi
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !=/home/me/public_html/sponge/sponge.fcgi
+RewriteRule ^(.*)$ sponge.fcgi/$1 [L]

@@ -1,0 +1,32 @@
+204.93.154.220 - - [03/Apr/2014 11:15:50] "GET / HTTP/1.0" 200 -
+204.93.154.220 - - [03/Apr/2014 11:15:50] code 400, message Bad request version ('RTSP/1.0')
+204.93.154.220 - - [03/Apr/2014 11:15:50] "OPTIONS / RTSP/1.0" 400 -
+204.93.154.220 - - [03/Apr/2014 11:15:55] code 400, message Bad request syntax ('\x00\x1e\x00\x06\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x07version\x04bind\x00\x00\x10\x00\x03')
+204.93.154.220 - - [03/Apr/2014 11:15:55] "versionbind" 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:00] code 400, message Bad request syntax ('\x00\x00\x00\xa4\xffSMBr\x00\x00\x00\x00\x08\x01@\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00@\x06\x00\x00\x01\x00\x00\x81\x00\x02PC NETWORK PROGRAM 1.0\x00\x02MICROSOFT NETWORKS 1.03\x00\x02MICROSOFT NETWORKS 3.0\x00\x02LANMAN1.0\x00\x02LM1.2X002\x00\x02Samba\x00\x02NT LANMAN 1.0\x00\x02NT LM 0.12\x00')
+204.93.154.220 - - [03/Apr/2014 11:16:00] "??SMB@@?PC NETWORK PROGRAM 1.0MICROSOFT NETWORKS 1.03MICROSOFT NETWORKS 3.0LANMAN1.0LM1.2X002SambaNT LANMAN 1.0NT LM 0.12" 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:00] "OPTIONS / HTTP/1.0" 200 -
+204.93.154.220 - - [03/Apr/2014 11:16:05] code 400, message Bad request syntax ('\x80\x00\x00(r\xfe\x1d\x13\x00\x00\x00\x00\x00\x00\x00\x02\x00\x01\x86\xa0\x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+204.93.154.220 - - [03/Apr/2014 11:16:05] "?(r????|" 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:11] code 400, message Bad HTTP/0.9 request type ('\x00')
+204.93.154.220 - - [03/Apr/2014 11:16:11] "
+                                           " 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:11] code 400, message Bad request syntax ('HELP')
+204.93.154.220 - - [03/Apr/2014 11:16:11] "HELP" 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:11] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G\xd7\xf7\xba,\xee\xea\xb2`~\xf3\x00\xfd\x82{\xb9\xd5\x96\xc8w\x9b\xe6\xc4\xdb<=\xdbo\xef\x10n\x00\x00(\x00\x16\x00\x13\x00')
+204.93.154.220 - - [03/Apr/2014 11:16:11] "SO?G???,??`~???{?Ֆ?w????<=?o?n(" 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:16] code 400, message Bad HTTP/0.9 request type ('l\x00')
+204.93.154.220 - - [03/Apr/2014 11:16:16] "l
+                                            " 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:16] "GET /nice%20ports%2C/Tri%6Eity.txt%2ebak HTTP/1.0" 404 -
+204.93.154.220 - - [03/Apr/2014 11:16:16] code 400, message Bad request syntax ('\x01default')
+204.93.154.220 - - [03/Apr/2014 11:16:16] "default" 400 -
+^C
+(feyzi)[thomas-jefferson]$ 204.93.154.220 - - [03/Apr/2014 11:16:21] code 400, message Bad HTTP/0.9 request type ('0')
+204.93.154.220 - - [03/Apr/2014 11:16:21] "0
+                                            `?" 400 -
+204.93.154.220 - - [03/Apr/2014 11:16:21] code 400, message Bad request version ('SIP/2.0')
+204.93.154.220 - - [03/Apr/2014 11:16:21] "OPTIONS sip:nm SIP/2.0" 400 -
+fg
+python sponge.py --public --debug
+^C
