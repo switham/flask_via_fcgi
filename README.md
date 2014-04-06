@@ -18,7 +18,8 @@ The bug involves `.htaccess` files like this:
 `RewriteRule ^(.*)$ sponge.fcgi/$1 [L]`
 
 Here, `%{REQUEST_FILENAME}` means, "the requested URL mapped to an absolute path in the filesystem," and `!-f` means, "Not(there's a file there)."
-This tells Apache, "If the URL maps to a real file, don't rewrite the URL, just **serve it to anyone who asks for it**, 
+This tells Apache, "If the URL maps to a real file, don't rewrite the URL, 
+just **serve the file to anyone who asks for it**, 
 otherwise, apply the `RewriteRule` (which activates 
 `fcgi`). In other words, make every file in this subdirectory tree 
 publicly readable. And, if a URL that you want Flask to serve happens to 
