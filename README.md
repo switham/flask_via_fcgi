@@ -1,4 +1,4 @@
-<h2>A slightly more secure way to run Flask using FastCGI.</h2>
+<h3>A slightly more secure way to run Flask using FastCGI.</h3>
 
 There's a security bug that people seem to spread by word of mouth.  It shows up in recipes for running web apps using `.htaccess` and `FastCGI`, a.k.a. `fcgi`.  This project gives the same recipe while fixing the bug.
 
