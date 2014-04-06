@@ -11,10 +11,10 @@ service).  The recipe deserves explaining in English; for now an example is give
 
 The bug involves `.htaccess` files like this:
 
-> Options +ExecCGI
-> AddHandler fcgid-script .fcgi
-> RewriteEngine On
-> <b>RewriteCond %{REQUEST_FILENAME} !-f</b>
+> Options +ExecCGI<br>
+> AddHandler fcgid-script .fcgi<br>
+> RewriteEngine On<br>
+> <b>RewriteCond %{REQUEST_FILENAME} !-f</b><br>
 > RewriteRule ^(.*)$ sponge.fcgi/$1 [L]
 
 Here, `%{REQUEST_FILENAME}` means, "the requested URL mapped to an absolute path in the filesystem," and `!-f` means, "Not(there's a file there)."
