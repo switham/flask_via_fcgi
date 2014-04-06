@@ -7,18 +7,19 @@ in part of a directory being served by Apache, when you don't have control
 over Apache's config files (e.g., when you're running on a hosting
 service).  The recipe deserves explaining in English; for now an example is given by the files in this project.
 
-<h4>The Gaping Hole</h4
+<h4>The Gaping Hole</h4>
 
-The bug involves `.htaccess` files with lines like these:
+The bug involves `.htaccess` files like this:
 
-    Options +ExecCGI
-    AddHandler fcgid-script .fcgi
-    RewriteEngine On
-    <b>RewriteCond %{REQUEST_FILENAME} !-f</b>
-    RewriteRule ^(.*)$ sponge.fcgi/$1 [L]
+> Options +ExecCGI
+> AddHandler fcgid-script .fcgi
+> RewriteEngine On
+> <b>RewriteCond %{REQUEST_FILENAME} !-f</b>
+> RewriteRule ^(.*)$ sponge.fcgi/$1 [L]
 
-This tells Apache, "If the URL maps to a real file, **serve it to anyone 
-who asks for it**, otherwise, apply the `RewriteRule` (which activates 
+Here, `%{REQUEST_FILENAME}` means, "the requested URL mapped to an absolute path in the filesystem," and `!-f` means, "Not(there's a file there)."
+This tells Apache, "If the URL maps to a real file, don't rewrite the URL, just **serve it to anyone who asks for it**, 
+otherwise, apply the `RewriteRule` (which activates 
 `fcgi`). In other words, make every file in this subdirectory tree 
 publicly readable. And, if a URL that you want Flask to serve happens to 
 coincide with an actual file, Flask doesn't get called--the direct 
@@ -28,7 +29,7 @@ any information in the directory you want to keep secret, then you need a
 much more restrictive rule, Fortunately it's not that hard; replace the 
 `RewriteCond` line with something like:
 
-    RewriteCond %(REQUEST_FILENAME) !=/home/me/public_html/sponge/sponge.fcgi
+> RewriteCond %(REQUEST_FILENAME) !=/home/me/public_html/sponge/sponge.fcgi
 
 That should be all one line. $HOME doesn't work in this context, you have 
 to spell it out. What this `RewriteCond` means is, treat this *one file* 
