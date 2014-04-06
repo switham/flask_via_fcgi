@@ -11,6 +11,9 @@ service).  The recipe deserves explaining in English; for now an example is give
 
 The bug involves `.htaccess` files like this:
 
+`just code`
+*`bold code?`*
+
 > Options +ExecCGI<br>
 > AddHandler fcgid-script .fcgi<br>
 > RewriteEngine On<br>
