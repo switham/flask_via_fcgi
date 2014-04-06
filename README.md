@@ -2,7 +2,7 @@ There is an insecure recipe for serving a Flask (or other Python, Ruby, Perl, PH
 
     RewriteCond %{REQUEST_FILENAME} !-f
 
-This tells Apache, "If the URL maps to a real file, **serve it to anyone who asks for it**, otherwise, apply the RewriteRule (which activates the Flask app). In other words, make every file in this subdirectory tree publicly readable. And, if a URL that Flask is trying to serve happens to coincide with an actual file, the direct contents of the file take precedence. If you want the Flask app to control access, or if there is any information in the directory you want to keep secret, then you need a much more restrictive rule, Fortunately it's not that hard; replace the RewriteCond line with (following Will's example):
+This tells Apache, "If the URL maps to a real file, **serve it to anyone who asks for it**, otherwise, apply the RewriteRule (which activates the Flask app). In other words, make every file in this subdirectory tree publicly readable. And, if a URL that Flask is trying to serve happens to coincide with an actual file, the direct contents of the file take precedence. If you want the Flask app to control access, or if there is any information in the directory you want to keep secret, then you need a much more restrictive rule, Fortunately it's not that hard; replace the RewriteCond line with something like:
 
     RewriteCond %(REQUEST_FILENAME) !=/home/me/public_html/sponge/sponge.fcgi
 
