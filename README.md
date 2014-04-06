@@ -1,4 +1,14 @@
-There is an insecure recipe for serving a Flask (or other Python, Ruby, Perl, PHP, etc.) application in part of a directory being served by Apache, when you don't have control over Apache's config files (e.g., when you're running on DreamHost or BlueHost).  It involves a .htaccess file with the following line:
+<h2>A slightly more secure way to run Flask using FastCGI.</h2>
+
+There's a security bug that people seem to spread by word of mouth.  It shows up in recipes for running web apps using `.htaccess` and `FastCGI`, a.k.a. `fcgi`.  This project gives the same recipe while fixing the bug.
+
+This method could be used to run any Python, Ruby, Perl, or PHP application 
+in part of a directory being served by Apache, when you don't have control 
+over Apache's config files (e.g., when you're running on on a hosting
+service).  The recipe deserves explaining in English; for now an example of 
+the correct solution is given by the files in this project.
+
+<b>But the bug</b> involves `.htaccess` files with this line:
 
     RewriteCond %{REQUEST_FILENAME} !-f
 
