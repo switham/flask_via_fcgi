@@ -5,12 +5,16 @@ There's a security bug that people seem to spread by word of mouth.  It shows up
 This method could be used to run any Python, Ruby, Perl, or PHP application 
 in part of a directory being served by Apache, when you don't have control 
 over Apache's config files (e.g., when you're running on a hosting
-service).  The recipe deserves explaining in English; for now an example of 
-the correct solution is given by the files in this project.
+service).  The recipe deserves explaining in English; for now an example is given by the files in this project.
 
-<b>But the bug</b> involves `.htaccess` files with lines like these:
+<h4>The Gaping Hole</h4
 
-    RewriteCond %{REQUEST_FILENAME} !-f
+The bug involves `.htaccess` files with lines like these:
+
+    Options +ExecCGI
+    AddHandler fcgid-script .fcgi
+    RewriteEngine On
+    <b>RewriteCond %{REQUEST_FILENAME} !-f</b>
     RewriteRule ^(.*)$ sponge.fcgi/$1 [L]
 
 This tells Apache, "If the URL maps to a real file, **serve it to anyone 
@@ -28,7 +32,9 @@ much more restrictive rule, Fortunately it's not that hard; replace the
 
 That should be all one line. $HOME doesn't work in this context, you have 
 to spell it out. What this `RewriteCond` means is, treat this *one file* 
-in the usual way, which has been set up to be a CGI script. Every other 
-URL in this subdirectory goes through Flask. You could set up more 
-exceptions using multiple `RewriteCond` lines, but allowing nothing at 
+in the usual way, which the rest of the recipe sets up to be an `fcgi` 
+script. Every other 
+URL in this subdirectory goes through `fcgi` and Flask. You could set up more 
+exceptions (i.e. name paths you want Apache to serve directly) using 
+multiple `RewriteCond` lines, but allowing almost nothing at 
 first and adding individual exceptions as needed, is the right way to go.
