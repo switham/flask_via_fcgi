@@ -1,1 +1,7 @@
 Web clients shouldn't see this file.
+Using .htaccess.BAD in place of .htaccess, Apache would serve this file.
+With the corrected .htaccess, even though this IS a file in the file
+system, Apache (mod_rewrite) will pass requests for this file's URL
+through sponge.fcgi => sponge.py, and since sponge.py doesn't 
+provide a route for this, a 404 comes back.
+

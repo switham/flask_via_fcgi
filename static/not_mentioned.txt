@@ -1,2 +1,5 @@
 Hi, where'd you hear about me?
-
+Although sponge.py's main page doesn't give a link to this file,
+and sponge.py has no specific @route for this file,
+if you guess it's name, Flask will serve it to you
+because it's in the static directory.

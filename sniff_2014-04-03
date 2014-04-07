@@ -1,3 +1,6 @@
+Got these messages in my Apache log one day while I was actually watching
+the log:
+
 204.93.154.220 - - [03/Apr/2014 11:15:50] "GET / HTTP/1.0" 200 -
 204.93.154.220 - - [03/Apr/2014 11:15:50] code 400, message Bad request version ('RTSP/1.0')
 204.93.154.220 - - [03/Apr/2014 11:15:50] "OPTIONS / RTSP/1.0" 400 -
@@ -27,6 +30,40 @@
                                             `?" 400 -
 204.93.154.220 - - [03/Apr/2014 11:16:21] code 400, message Bad request version ('SIP/2.0')
 204.93.154.220 - - [03/Apr/2014 11:16:21] "OPTIONS sip:nm SIP/2.0" 400 -
-fg
-python sponge.py --public --debug
-^C
+
+You can see that the messages span about 30 seconds.
+
+This is a security-hole probing program running on...
+    $ host 204.93.154.220
+    220.154.93.204.in-addr.arpa domain name pointer unknown.scnet.net.
+    $
+...a hosting company called "server central"--which is not my 
+hosting company.  The request that got my curiosity was
+    ...  /nice%20ports%2C/Tri%6Eity.txt%2ebak ...
+which translates to /nice ports,/Trinity.txt.bak.  Googling that leads to
+comments by programmers adding this case to the "nmap" program,
+    http://nmap.org
+    https://en.wikipedia.org/wiki/Nmap
+viz.,
+    On Fri, May 19, 2006 at 02:35:49PM -0700 or thereabouts, Fyodor wrote:
+    | Actually, we may want to include some escaped characters as the way
+    | the 404 page returns them may give more details as to the service.
+    | 
+    | Maybe "GET /nice%20ports%2C/Tri%6Eity.txt%2ebak HTTP/1.0\r\n\r\n"
+    | 
+    | Cheers,
+    | -F
+
+    The more I think about it, that looks like a really good probe! The
+    stranger we can make a request the more diverse and identifiable the
+    responses should be. That probe should elicit some interesting responses.
+
+Nmap is a program for scanning for computers and finding out what OS, software, 
+services and connections they have.  It can be used to check whether your 
+own computers have ports open or services running that they shouldn't, or 
+(as in what happened to me above), to probe other people's computers.
+
+I'm new to this.  Someone finding the IP and port number on which I'm
+running my web site, and scanning for vulnerabilities, is not just 
+something that *could* happen, it looks like it's happening all the
+time to everyone.
